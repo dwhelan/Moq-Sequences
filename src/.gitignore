@@ -1,0 +1,6 @@
+*ReSharper*
+/bin/
+/obj/
+/lib/
+*.csproj.user
+*.suo

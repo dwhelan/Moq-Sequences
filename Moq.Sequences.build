@@ -1,0 +1,56 @@
+<project default="build">
+
+  <property name="configuration"     value="Release"/>
+  <property name="msbuild.verbosity" value="normal"/>
+  <property name="bin.dir"           value="src\bin\${configuration}" dynamic="true" />
+  <property name="log.dir"           value="${path::get-full-path('build\log')}\${configuration}" dynamic="true" />
+  <property name="lib.dir"           value="src\lib"/>
+
+  <property name="nunit.version"     value="2.5.5.10112"/>
+  <property name="nunit.exe"         value="${lib.dir}\NUnit\${nunit.version}\bin\net-2.0\nunit-console.exe"/>
+  <property name="nunit.output"      value="${log.dir}/UnitTestReport.xml" dynamic="true"/>
+  <property name="nunit.assemblies"  value="Moq.Sequences.dll"/>
+  <property name="nunit.args"        value='${nunit.assemblies} /nologo /nodots /noshadow /xml="${nunit.output}" /framework:net-4.0' dynamic="true"/>
+
+  <target name="build" depends="clean compile test"/>
+
+  <target name="compile">
+    <property name="msbuild.target" value="Rebuild"/>
+    <call target="msbuild"/>
+  </target>
+
+  <target name="test">
+    <exec program="${nunit.exe}"
+          commandline="${nunit.args}"
+          workingdir="${bin.dir}"/>
+  </target>
+
+  <target name="clean">
+    <property name="msbuild.target" value="Clean"/>
+    <call target="msbuild"/>
+    <delete dir="build" failonerror="false"/>
+  </target>
+
+  <target name="msbuild">
+    <mkdir dir="${log.dir}"/>
+    <exec program="${framework::get-tool-path('msbuild.exe')}" verbose="true" workingdir="src" >
+      <arg value="/nologo"/>
+      <arg value="/noconsolelogger"/>
+      <arg value="/fileLogger"/>
+      <arg value="/fileLoggerParameters:LogFile=${log.dir}\${msbuild.target}.log;Verbosity=${msbuild.verbosity}"/>
+      <arg value="/target:${msbuild.target}"/>
+      <arg value="/property:Configuration=${configuration}"/>
+      <arg value="/property:SolutionDir=${project::get-base-directory()}\\"/>
+    </exec>
+  </target>
+
+  <target name="debug">
+    <property name="configuration" value="Debug"/>
+  </target>
+
+  <target name="verbose">
+    <property name="msbuild.verbosity" value="detailed"/>
+    <property name="ncover.verbosity" value="Verbose"/>
+  </target>
+
+</project>
