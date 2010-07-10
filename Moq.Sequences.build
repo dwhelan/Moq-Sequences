@@ -14,6 +14,12 @@
 
   <target name="build" depends="clean compile test"/>
 
+  <target name="clean">
+    <property name="msbuild.target" value="Clean"/>
+    <call target="msbuild"/>
+    <delete dir="build" failonerror="false"/>
+  </target>
+
   <target name="compile">
     <property name="msbuild.target" value="Rebuild"/>
     <call target="msbuild"/>
@@ -23,12 +29,6 @@
     <exec program="${nunit.exe}"
           commandline="${nunit.args}"
           workingdir="${bin.dir}"/>
-  </target>
-
-  <target name="clean">
-    <property name="msbuild.target" value="Clean"/>
-    <call target="msbuild"/>
-    <delete dir="build" failonerror="false"/>
   </target>
 
   <target name="msbuild">
