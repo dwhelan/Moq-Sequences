@@ -6,8 +6,8 @@ Supports method invocations, property setters and getters.
 Allows you to specify the number of times a specific call should be expected.
 Provides loops which allow you to group calls into a recurring group.
 Allows you to specify the the number of times a loop should be expected.
+Calls that are expected to be called in sequence can be inter-mixed with calls that are expected in any order.
 Multi-threaded support.
-Calls that are expected to be called in sequence can be inter-mized with calls that are expected in any order.
 
 To Use
 ======
