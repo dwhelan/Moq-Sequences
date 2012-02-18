@@ -253,6 +253,18 @@ namespace Moq.Sequences
         }
 
         [Test]
+        public void Enforce_mock_calls_outside_sequences_if_mock_is_strict()
+        {
+            var strictMock = new Mock<I>(MockBehavior.Strict);
+
+            using (Sequence.Create())
+            {
+            }
+
+            Assert.Throws<MockException>(() => strictMock.Object.Method1());
+        }
+
+        [Test]
         public void Enforce_active_sequence_for_loop()
         {
             Assert.Throws<SequenceUsageException>(() => Sequence.Loop());
