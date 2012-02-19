@@ -1,5 +1,6 @@
 *ReSharper*
-/bin/
-/obj/
+bin/
+obj/
 *.csproj.user
 *.suo
+*.nupkg
