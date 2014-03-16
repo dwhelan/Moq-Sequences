@@ -14,7 +14,7 @@ Multi-threaded support.
 
 ## To Use
 
-Add a reference to *Moq.Sequences.dll* in your .Net project or install the library through the NuGet Package Manager Console:
+Add a reference to **Moq.Sequences.dll** in your .Net project or install the library through the NuGet Package Manager Console:
 
 ```
 Install-Package Moq.Sequences
@@ -45,7 +45,7 @@ using Moq.Sequences;
         ...
         // Logic that triggers the above method calls should be done here.
         ...
-    }";
+    }
 ```
 
 Note that the order expected is the order in which the `Setup` methods execute.
@@ -73,7 +73,7 @@ using Moq.Sequences;
         ...
         // Logic that triggers the above method calls should be done here.
         ...
-    }";
+    }
 ```
 
 ## To Build
