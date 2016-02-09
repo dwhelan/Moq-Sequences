@@ -1,6 +1,7 @@
 *ReSharper*
 bin/
 obj/
+packages/
 *.csproj.user
 *.suo
 *.nupkg
