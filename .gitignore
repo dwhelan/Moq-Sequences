@@ -1,2 +1,4 @@
-/build/
-.svn/
+.vs/
+packages/
+**/bin/
+**/obj/
