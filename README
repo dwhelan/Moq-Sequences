@@ -72,6 +72,4 @@ using Moq.Sequences;
 
 To Build
 ========
-You will need NAnt installed (Moq.Sequences was built using NAnt v0.91).
-
-At the command line of the root folder, enter "nant" and you will find Moq.Sequences.dll in the src\bin\Release folder.
+Both the source code and the NuGet package can be built with Visual Studio 2017 (Community Edition or better).
