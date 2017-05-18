@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.4
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequences", "Sequences.csproj", "{514A7026-8B01-40D5-9289-1E4F19BFE5F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support Files", "Support Files", "{0C7FDC5F-2148-4EC9-AE73-21B4CD00A744}"
@@ -8,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support Files", "Support Fi
 		..\Moq.Sequences.build = ..\Moq.Sequences.build
 		..\README = ..\README
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequences.Tests", "..\Sequences.Tests\Sequences.Tests.csproj", "{0414149A-80A7-4BE7-93B8-CC17523510D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{514A7026-8B01-40D5-9289-1E4F19BFE5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{514A7026-8B01-40D5-9289-1E4F19BFE5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{514A7026-8B01-40D5-9289-1E4F19BFE5F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0414149A-80A7-4BE7-93B8-CC17523510D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0414149A-80A7-4BE7-93B8-CC17523510D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0414149A-80A7-4BE7-93B8-CC17523510D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0414149A-80A7-4BE7-93B8-CC17523510D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
