@@ -4,14 +4,14 @@
     <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
     <Version>2.0.0</Version>
     <Authors>Declan Whelan</Authors>
-    <Copyright>© Declan Whelan 2010</Copyright>
+    <Copyright>© 2010 Declan Whelan</Copyright>
     <Description>Supports checking that Moq setups are executed in sequence.</Description>
     <Company />
-    <PackageLicenseUrl>https://github.com/dwhelan/Moq-Sequences/blob/master/License.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/dwhelan/Moq-Sequences/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/dwhelan/Moq-Sequences</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dwhelan/Moq-Sequences.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageReleaseNotes>Added NuGet support.</PackageReleaseNotes>
+    <PackageReleaseNotes>Retargeted at .NET Standard 1.3 / .NET Framework 4.5 and Moq 4.7. Removed dependency on NUnit.</PackageReleaseNotes>
     <PackageTags>moq mock .net45 netstandard1.3</PackageTags>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
