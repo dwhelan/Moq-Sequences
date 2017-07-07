@@ -7,14 +7,29 @@ namespace Moq.Sequences
         private static readonly Times anyNumberOfTimes = Times.Between(0, Int32.MaxValue, Range.Inclusive);
         private bool invocationExceptionThrown;
 
-        [ThreadStatic]
-        private static Sequence instance;
+        private static Sequence Instance
+        {
+            get => Sequence.ContextMode.ActiveSequence;
+            set => Sequence.ContextMode.ActiveSequence = value;
+        }
 
-        internal static Sequence Instance { get { return instance; } }
+        private static SequenceContextMode contextMode = SequenceContextMode.Thread;
+
+        /// <summary>
+        /// Gets or sets the context mode that determines how sequences behave in the presence of
+        /// concurrency or asynchrony. This is a global setting that will affect all sequences.
+        /// It is recommended that you set the context mode only once. The default is
+        /// <see cref="SequenceContextMode.Thread"/>.
+        /// </summary>
+        public static SequenceContextMode ContextMode
+        {
+            get => Sequence.contextMode;
+            set => Sequence.contextMode = value ?? throw new ArgumentNullException(nameof(value));
+        }
 
         private Sequence() : base(Times.AtMostOnce())
         {
-            instance = this;
+            Instance = this;
         }
 
         public static Sequence Create()
@@ -74,7 +89,7 @@ namespace Moq.Sequences
 
         protected override void DoDisposalChecks()
         {
-            instance = null;
+            Instance = null;
 
             if (invocationExceptionThrown)
                 return;
