@@ -11,7 +11,7 @@ Allows you to enforce that methods or property accessors are called in a specifi
 * Provides loops which allow you to group calls into a recurring group.
 * Allows you to specify the the number of times a loop should be expected.
 * Calls that are expected to be called in sequence can be inter-mixed with calls that are expected in any order.
-* Multi-threaded support.
+* Multi-threaded support, as well as support for `Task`-based concurrency and `async` / `await`.
 
 ## To Use ##
 
@@ -27,7 +27,7 @@ During mock execution, any violation of sequencing will throw a `SequenceExcepti
 When the `Sequence` is disposed any sequencing expectations that were not fulfilled will cause a 
 `SequenceException` to be thrown.
 
-There can only be one `Sequence` active per thread. An attempt to create more than one will throw a `SequenceUsageException`.
+Sequences cannot be nested. An attempt to create more than one will throw a `SequenceUsageException`.
 
 ### Steps ###
 
@@ -72,6 +72,19 @@ using (Sequence.Create())
     // Logic that triggers the above method calls should be done here.
     …
 }
+```
+
+### Support for `Task`-based concurrency and `async` / `await` ###
+
+This library was originally designed with explicit multi-threading in mind. By default, the currently
+active `Sequence` is tied to (and only accessible on) the specific thread that created it.
+Unfortunately, this behaviour does not play well together with `Task`-based concurrency.
+
+You can change Moq.Sequences' behavior to a mode that is compatible with `Task`-based concurrency
+and `async` / `await` by doing the following before any of your tests execute:
+
+```csharp
+Sequence.ContextMode = SequenceContextMode.Async;
 ```
 
 ## To Build ##
