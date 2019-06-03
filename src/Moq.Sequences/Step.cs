@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text;
 
 namespace Moq.Sequences
 {
@@ -6,21 +7,17 @@ namespace Moq.Sequences
     {
         private readonly Times expectedCount;
         private readonly string action;
-        private readonly int maxCount;
         private int actualCount;
 
         internal bool Started { get { return actualCount > 0; } }
         internal bool Complete { get; private set; }
 
-        private static readonly FieldInfo to = typeof(Times).GetField("to", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly MethodInfo verify = typeof(Times).GetMethod("Verify", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly MethodInfo getExceptionMessage = typeof(Times).GetMethod("GetExceptionMessage", BindingFlags.Instance | BindingFlags.NonPublic);
 
         internal Step(Times expectedCount, string action = "")
         {
             this.expectedCount = expectedCount;
             this.action = action;
-            maxCount = (int)to.GetValue(expectedCount);
         }
 
         internal void CountCall()
@@ -28,6 +25,7 @@ namespace Moq.Sequences
             if (Complete)
                 throw new SequenceException(this + " is not invokable because it has already completed.");
 
+            var (_, maxCount) = expectedCount;
             if (++actualCount > maxCount)
                 throw new SequenceException(GetFailureMessage("Exceeded maximum number of invocations."));
         }
@@ -42,12 +40,17 @@ namespace Moq.Sequences
 
         private bool Verified()
         {
-            return (bool) verify.Invoke(expectedCount, new[] { (object)actualCount });
+            var (minCount, maxCount) = expectedCount;
+            return minCount <= actualCount && actualCount <= maxCount;
         }
         
         protected virtual string GetFailureMessage(string failMessage)
         {
-            return (string) getExceptionMessage.Invoke(expectedCount, new object[] { failMessage, ToString(), actualCount });
+            var message = new StringBuilder();
+            message.AppendLine(failMessage);
+            message.Append((string)getExceptionMessage.Invoke(expectedCount, new object[] { actualCount }));
+            message.AppendLine(action);
+            return message.ToString();
         }
 
         internal virtual void Reset()
