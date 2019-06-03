@@ -24,7 +24,7 @@ namespace Moq.Sequences
 
         internal Step CreateStep(object setup, Times expectedCalls)
         {
-            var step = new Step(expectedCalls, "''" + setup + "'");
+            var step = new Step(expectedCalls, "'" + setup + "'");
             LastCreatedActiveLoop().steps.Add(step);
             return step;
         }
