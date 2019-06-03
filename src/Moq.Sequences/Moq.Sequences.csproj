@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-    <Version>2.1.0</Version>
+    <Version>2.2.0</Version>
     <Authors>Declan Whelan</Authors>
     <Copyright>© 2010 Declan Whelan</Copyright>
     <Description>Supports checking that Moq setups are executed in sequence.</Description>
@@ -13,8 +13,8 @@
     <RepositoryType>Git</RepositoryType>
     <PackageReleaseNotes>Added support for Task-based concurrency and async / await.</PackageReleaseNotes>
     <PackageTags>moq mock .net45 netstandard2.0</PackageTags>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <FileVersion>2.1.0.0</FileVersion>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
+    <FileVersion>2.2.0.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
