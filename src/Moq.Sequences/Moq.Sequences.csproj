@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <Version>2.1.0</Version>
     <Authors>Declan Whelan</Authors>
     <Copyright>© 2010 Declan Whelan</Copyright>
@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/dwhelan/Moq-Sequences.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageReleaseNotes>Added support for Task-based concurrency and async / await.</PackageReleaseNotes>
-    <PackageTags>moq mock .net45 netstandard1.3</PackageTags>
+    <PackageTags>moq mock .net45 netstandard2.0</PackageTags>
     <AssemblyVersion>2.1.0.0</AssemblyVersion>
     <FileVersion>2.1.0.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -21,12 +21,12 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <DefineConstants>$(DefineConstants);FEATURE_CALLCONTEXT</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <DefineConstants>$(DefineConstants);FEATURE_ASYNCLOCAL</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.7.0" />
+    <PackageReference Include="Moq" Version="4.11.0" />
   </ItemGroup>
 
 </Project>
