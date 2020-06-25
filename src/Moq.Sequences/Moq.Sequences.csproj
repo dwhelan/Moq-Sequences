@@ -7,7 +7,7 @@
     <Copyright>© 2010 Declan Whelan</Copyright>
     <Description>Supports checking that Moq setups are executed in sequence.</Description>
     <Company />
-    <PackageLicenseUrl>https://github.com/dwhelan/Moq-Sequences/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/dwhelan/Moq-Sequences</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dwhelan/Moq-Sequences.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
